@@ -53,7 +53,7 @@ class SleepTrackerViewModel(
      * A [CoroutineScope] keeps track of all coroutines started by this ViewModel.
      *
      * Because we pass it [viewModelJob], any coroutine started in this uiScope can be cancelled
-     * by calling `viewModelJob.cancel()`
+     * by calling viewModelJob.cancel()
      *
      * By default, all coroutines started in uiScope will launch in [Dispatchers.Main] which is
      * the main thread on Android. This is a sensible default because most coroutines started by
@@ -63,7 +63,8 @@ class SleepTrackerViewModel(
 
     private var tonight = MutableLiveData<SleepNight?>()
 
-    private val nights = database.getAllNights()
+    val nights = database.getAllNights()
+
 
     /**
      * Converted nights to Spanned for displaying.
@@ -102,7 +103,7 @@ class SleepTrackerViewModel(
     private var _showSnackbarEvent = MutableLiveData<Boolean?>()
 
     /**
-     * If this is true, immediately `show()` a toast and call `doneShowingSnackbar()`.
+     * If this is true, immediately show() a toast and call doneShowingSnackbar().
      */
     val showSnackBarEvent: LiveData<Boolean?>
         get() = _showSnackbarEvent
@@ -121,7 +122,7 @@ class SleepTrackerViewModel(
         get() = _navigateToSleepQuality
 
     /**
-     * Call this immediately after calling `show()` on a toast.
+     * Call this immediately after calling show() on a toast.
      *
      * It will clear the toast request, so if the user rotates their phone it won't show a duplicate
      * toast.
